@@ -1,0 +1,6 @@
+[package]
+name = "luhn_test_kata"
+version = "0.1.0"
+authors = ["jdvr <juandavidvegarguez@gmail.com>"]
+
+[dependencies]
