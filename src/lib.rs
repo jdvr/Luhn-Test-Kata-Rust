@@ -5,7 +5,7 @@ mod tests {
 
     #[test]
     fn it_past_with_the_sample_number() {
-        let sample_number = vec![4, 9, 9, 2, 7, 3, 9, 8, 7, 1, 6];
+        let sample_number = String::from("49927398716");
         assert_eq!(true, luhn(sample_number));
     }
 }
@@ -15,7 +15,15 @@ fn sum_digits(number: u32) -> u32 {
     digits.iter().fold(0, |sum, n| sum + n)
 }
 
-pub fn luhn(number_as_vec: Vec<u32>) -> bool {
+fn char_to_int(c: char) -> u32 {
+    match c.to_digit(10) {
+        Some(n) => n,
+        None => 0,
+    }
+}
+
+pub fn luhn(raw_number: String) -> bool {
+    let number_as_vec: Vec<u32> = raw_number.chars().map(|c| char_to_int(c)).collect();
     let s1 = number_as_vec.iter()
         .rev()
         .enumerate()
